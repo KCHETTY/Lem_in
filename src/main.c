@@ -23,14 +23,13 @@ int		main()
 
 	g.ants = 0;
 	g.data = save_data(&g);
-	printf("SSJSJJSJSJSJSS\n");
 	if (get_map(&g))
-	{	printf("HIT SS\n ");
+	{	printf("TSE");
 		get_data(&g);
 		
 		while (i < g.num_rooms)
 		{
-			printf("ADDRESS: %p\n NAME: %s\n tesy: %d\n", g.rooms[i], g.rooms[i]->room_name, g.rooms[i]->coord_x);//, g.rooms[i]->coord_y);
+			printf("ADDRESS: %p NAME: %s X: %d\n", g.rooms[i], g.rooms[i]->room_name, g.rooms[i]->coord_x);//, g.rooms[i]->coord_y);
 			i++;
 		}
 		printf("ant_flag : %i \n", g.ant_flag);
