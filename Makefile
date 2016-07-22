@@ -6,13 +6,13 @@
 #    By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/25 11:55:33 by arnovan-          #+#    #+#              #
-#    Updated: 2016/07/21 17:29:17 by kchetty          ###   ########.fr        #
+#    Updated: 2016/07/22 07:49:36 by kchetty          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=lem_in
 
-CC=gcc
+CC=clang
 
 CFLAGS=-Wall -Wextra -Werror -g
 

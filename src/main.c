@@ -6,7 +6,7 @@
 /*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/25 13:35:35 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/07/21 18:08:42 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/07/22 08:34:42 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int		main()
 
 	g.ants = 0;
 	g.data = save_data(&g);
+	printf("g.data: %p\n", g.data);
 	if (get_map(&g))
 	{	printf("TSE");
 		get_data(&g);
-		
+
 		while (i < g.num_rooms)
 		{
 			printf("ADDRESS: %p NAME: %s X: %d\n", g.rooms[i], g.rooms[i]->room_name, g.rooms[i]->coord_x);//, g.rooms[i]->coord_y);
