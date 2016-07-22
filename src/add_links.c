@@ -61,7 +61,8 @@ void	write_links(t_glob *g, int links, int i)
 			j++;
 		}
 	}
-	//g->rooms[i]->links[j] = NULL;
+	j++;
+	g->rooms[i]->links[j] = NULL;
 }
 
 int		get_link_num(t_glob *g, char *ref)
