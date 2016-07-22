@@ -6,7 +6,7 @@
 /*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/05 12:50:58 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/07/22 09:43:07 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/07/22 17:40:17 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			get_map(t_glob *g)
 	g->end_flag = 0;
 	///////////////////////////////////
 	node = g->data;
-	printf("NODE: %p\n", node);
+	//printf("NODE: %p\n", node);
 	while (node->next != NULL)
 	{
 		printf("node->str: %s\n" ,node->str);

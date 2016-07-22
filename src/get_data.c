@@ -6,20 +6,33 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 17:26:07 by kchetty           #+#    #+#             */
-/*   Updated: 2016/07/22 14:06:05 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/07/22 18:09:24 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /////link Up First And last nodes
+void	get_addr(t_glob *g, int i)
+{
+	if (g->start_flag == 1)
+	{
+		g->start_flag = 0;
+		g->start = g->rooms[i];
+	}
+	if (g->end_flag == 1)
+	{
+		g->end_flag = 0;
+		g->end = g->rooms[i];
+	}
+}
 
-void	get_data_2(t_glob *g, int i, char *str)
+void    get_data_2(t_glob *g, int i, char *str)
 {
 	char	**tmp;
-	
+
 	tmp = ft_strsplit(str, ' ');
-	printf("TEMP: %s\n", tmp[0]);
+	//printf("TEMP: %s\n", tmp[0]);
 	g->rooms[i]->room_name = tmp[0];
 	if (tmp[1][0] >= '0' && tmp[1][0] <= '9')
 		g->rooms[i]->coord_x = ft_atoi(tmp[1]);
@@ -27,7 +40,7 @@ void	get_data_2(t_glob *g, int i, char *str)
 		error();
 	if (tmp[2][0] >= '0' && tmp[2][0] <= '9')
 	{
-		printf("TMP2: %s\n", tmp[2]);
+		//printf("TMP2: %s\n", tmp[2]);
 		g->rooms[i]->coord_y = ft_atoi(tmp[2]);
 	}
 	g->rooms[i]->flag = 0;
@@ -38,17 +51,22 @@ void	get_data(t_glob *g)
 {
 	t_temp_list	*node;
 	int			i;
-	
+
 	node = g->data;
 	i = 0;
 	g->rooms = (t_data **)malloc(sizeof(t_data) * g->num_rooms + 1);
 	while (ft_strchr(node->str, '-') == NULL)
 	{
 		if(g->ants == 0)
-			g->ants = ft_atoi(node->str);	
+			g->ants = ft_atoi(node->str);
+		else if ((ft_strcmp("##start", node->str)) == 0)
+			g->start_flag = 1;
+		else if ((ft_strcmp("##end", node->str)) == 0)
+			g->end_flag = 1;
 		else if (*node->str != '#')
 		{
 			g->rooms[i] = (t_data *)malloc(sizeof(t_data));
+			get_addr(g, i);
 			get_data_2(g, i, node->str);
 			i++;				
 		}	
