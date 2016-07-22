@@ -23,6 +23,7 @@ int		get_num(char *name, t_glob *g)
 			return (i);
 		i++;
 	}
+	error();
 	return (0);
 }
 

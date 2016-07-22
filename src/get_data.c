@@ -45,7 +45,7 @@ void	get_data(t_glob *g)
 	while (ft_strchr(node->str, '-') == NULL)
 	{
 		if(g->ants == 0)
-			g->ants = ft_atoi(node->str);
+			g->ants = ft_atoi(node->str);	
 		else if (*node->str != '#')
 		{
 			g->rooms[i] = (t_data *)malloc(sizeof(t_data));
