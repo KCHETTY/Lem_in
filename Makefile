@@ -12,7 +12,7 @@
 
 NAME=lem_in
 
-CC=clang
+CC=gcc
 
 CFLAGS=-Wall -Wextra -Werror -g
 
