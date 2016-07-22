@@ -51,6 +51,7 @@ typedef struct				s_glob
 	t_temp_list				*data;
 	t_data					*start;
 	t_data					**rooms;
+	t_temp_list				*tmp;
 	t_data					*end;
 }							t_glob;
 

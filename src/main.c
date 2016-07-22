@@ -20,6 +20,7 @@ int		main()
 {
 	t_glob		g;
 	int	i = 0;
+	int j = 0;
 
 	g.ants = 0;
 	g.data = save_data(&g);
@@ -30,13 +31,16 @@ int		main()
 		add_links(&g);
 		while (i < g.num_rooms)
 		{
+			j = 0;
 			printf("ADDRESS: %p NAME: %s X: %d Y: %d\n", g.rooms[i], g.rooms[i]->room_name, g.rooms[i]->coord_x, g.rooms[i]->coord_y);
+
+			while (g.rooms[i]->links[j] != NULL)
+			{
+				printf("LINKS: %p\n", g.rooms[i]->links[j]);
+				j++;
+			}
 			i++;
 		}
-			
-		printf("link : %p \n", g.rooms[0]->links[0]);
-		printf("link1 : %p \n", g.rooms[1]->links[0]);
-		printf("link2 : %p \n", g.rooms[2]->links[0]);
 		//printf("start_flag : %i \n", g.start_flag);
 		//printf("ant_flag : %i \n", g.ant_flag);
 		//printf("end_flag : %i \n", g.end_flag);

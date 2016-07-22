@@ -17,10 +17,15 @@ int		get_num(char *name, t_glob *g)
 	int i;
 	
 	i = 0;
+	//printf("THIS IS THE NAME: %s\n", name);
 	while (i < g->num_rooms)
 	{
 		if (ft_strcmp(g->rooms[i]->room_name, name) == 0)
+		{
+			//printf("STUFF: %s\n", g->rooms[i]->room_name);
+			//printf("THIS IS THE EYE: %i\n", i);
 			return (i);
+		}
 		i++;
 	}
 	error();
@@ -32,15 +37,20 @@ t_data *get_adress(t_glob *g, char *name)
 	t_temp_list *node;
 	char	**stuff;
 
-	node = g->data;
+	if (g->tmp == NULL)
+		node = g->data;
+	else
+		node = g->tmp;
 	while (node->next != NULL)
 	{
 		if (ft_strchr(node->str, '-') != NULL)
 		{
+			g->tmp = node->next;
 			stuff = ft_strsplit(node->str, '-');
+			//printf("DATA[0]: %s and DATA[1]: %s\n", stuff[0], stuff[1]);
 			if (ft_strcmp(stuff[0], name) == 0)
 				return (g->rooms[get_num(stuff[1], g)]);
-			if (ft_strcmp(stuff[1], name) == 0)
+			else if (ft_strcmp(stuff[1], name) == 0)
 				return (g->rooms[get_num(stuff[0], g)]);
 		}
 		node = node->next;
@@ -51,6 +61,7 @@ t_data *get_adress(t_glob *g, char *name)
 void	write_links(t_glob *g, int links, int i)
 {
 	int	j;
+
 	j = 0;
 	if (links > 0)
 	{
@@ -58,11 +69,11 @@ void	write_links(t_glob *g, int links, int i)
 		while (j < links)
 		{
 			g->rooms[i]->links[j] = get_adress(g, g->rooms[i]->room_name);
+			//printf("TEH TE : %p\n", g->rooms[i]->links[j]);
 			j++;
 		}
-	}
-	j++;
-	g->rooms[i]->links[j] = NULL;
+		g->rooms[i]->links[j] = NULL;
+	}	
 }
 
 int		get_link_num(t_glob *g, char *ref)
@@ -93,6 +104,7 @@ void	add_links(t_glob *g)
 {
 	int i;
 	int	links;
+	g->tmp = NULL;
 
 	i = 0;
 	while (i < g->num_rooms)
@@ -100,6 +112,7 @@ void	add_links(t_glob *g)
 		links =	get_link_num(g, g->rooms[i]->room_name);
 		printf("NUM: %d\n", links);
 		write_links(g, links, i);	
+		g->tmp = NULL;
 		i++;
 	}
 }

@@ -72,5 +72,6 @@ void	get_data(t_glob *g)
 		}	
 		node = node->next;	
 	}
+	printf("START: %p    END: %p\n", g->start, g->end);
 	g->rooms[i] = NULL;
 }
