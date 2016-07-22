@@ -20,6 +20,12 @@
 # include <stdio.h>
 # include <string.h>
 
+typedef struct				s_temp_list
+{
+	char	*str;
+	struct s_temp_list *next;
+}							t_temp_list;
+
 typedef	struct				s_data
 {
 	int						room_type;
@@ -42,7 +48,7 @@ typedef struct				s_glob
 	int						is_space;
 	int						is_dash;
 	char					*cursor;
-	char					*data;
+	t_temp_list				*data;
 	t_data					*start;
 	t_data					**rooms;
 	t_data					*end;
@@ -50,5 +56,7 @@ typedef struct				s_glob
 
 int							get_map(t_glob *g);
 void						get_data(t_glob *g);
+t_temp_list					*save_data(t_glob *g);
 void						error(void);
+void						add_links(t_glob *g);
 #endif

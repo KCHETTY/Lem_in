@@ -23,36 +23,36 @@ static int	validate(t_glob *g)
 	return (1);
 }
 
-static int	test_alpha(t_glob *g)
+static int	test_alpha(char *str)
 {
 	char c;
 
-	while (*g->cursor != '\0')
+	while (*str != '\0')
 	{
-		c = *g->cursor;
+		c = *str;
 		if ((c >= 58 && c <= 126) || (c >= 33 && c <= 47))
 		{
 			return (1);
 		}
-		g->cursor++;
+		str++;
 	}
 	return (0);
 }
 
-static void	check_data(t_glob *g)
+static void	check_data(t_glob *g, char *str)
 {
 	g->is_space = 0;
 	g->is_dash = 0;
-	if (g->cursor[0] == 'L')
+	if (str[0] == 'L')
 		error();
 	g->lines++;
-	while (*g->cursor != '\0')
+	while (*str != '\0')
 	{
-		if (*g->cursor == ' ')
+		if (*str == ' ')
 			g->is_space++;
-		else if (*g->cursor == '-')
+		else if (*str == '-')
 			g->is_dash++;
-		g->cursor++;
+		str++;
 	}
 	if (g->is_space == 2)
 		g->num_rooms++;
@@ -62,6 +62,7 @@ static void	check_data(t_glob *g)
 
 int			get_map(t_glob *g)
 {
+	t_temp_list	*node;
 	/////// Intitialize in main ////////
 	g->num_links = 0;
 	g->num_rooms = 0;
@@ -70,19 +71,24 @@ int			get_map(t_glob *g)
 	g->start_flag = 0;
 	g->end_flag = 0;
 	///////////////////////////////////
-	while (get_next_line(0, &g->cursor))
+	node = g->data;
+	while (node->next != NULL)
 	{
-		if (*g->cursor == '\0')
+		if (node->str == NULL)
 			error();
-		if ((g->lines == 0) && (test_alpha(g) == 0))
+		if ((g->lines == 0) && (test_alpha(node->str) == 0))
 			g->ant_flag = 1;
-		if ((ft_strcmp("##start", g->cursor)) == 0)
+		if ((ft_strcmp("##start", node->str)) == 0)
 			g->start_flag = 1;
-		if ((ft_strcmp("##end", g->cursor)) == 0)
+		if ((ft_strcmp("##end", node->str)) == 0)
 			g->end_flag = 1;
-		if ((ft_strncmp("#", g->cursor, 1)) == 0)
+		if ((ft_strncmp("#", node->str, 1)) == 0)
+		{
+			node = node->next;
 			continue;
-		check_data(g);
+		}
+		check_data(g, node->str);
+		node = node->next;
 	}
 	if (validate(g))
 		return (1);

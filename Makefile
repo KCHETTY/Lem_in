@@ -12,7 +12,7 @@
 
 NAME=lem_in
 
-CC=clang
+CC=gcc
 
 CFLAGS=-Wall -Wextra -Werror -g
 
@@ -26,9 +26,9 @@ PATH_SRC= ./src/
 
 PATH_HD= -I includes/
 
-SRC = $(PATH_SRC)main.c $(PATH_SRC)validate_map.c $(PATH_SRC)get_data.c
+SRC = $(PATH_SRC)main.c $(PATH_SRC)validate_map.c $(PATH_SRC)get_data.c $(PATH_SRC)save_data.c $(PATH_SRC)add_links.c
 
-OBJ = main.o validate_map.o get_data.o
+OBJ = main.o validate_map.o get_data.o save_data.o add_links.o
 
 $(NAME):
 	@echo "Compiling binaries..."

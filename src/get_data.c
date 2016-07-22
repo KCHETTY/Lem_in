@@ -12,34 +12,44 @@
 
 #include "lem_in.h"
 
-void	malloc_rooms(t_glob *g)
-{
-	int	i;
+/////link Up First And last nodes
 
-	i = 0;
-	printf("NUM_ROOMS: %d\n", g->num_rooms);
-	while (i < g->num_rooms)
-	{
-		g->rooms[i] = (t_data *)malloc(sizeof(t_data));
-		if (g->rooms[i] == NULL)
-			error();
-		i++;
-	}
+void	get_data_2(t_glob *g, int i, char *str)
+{
+	char	**tmp;
+	
+	tmp = ft_strsplit(str, ' ');
+	printf("TEMP: %s\n", tmp[0]);
+	g->rooms[i]->room_name = tmp[0];
+	if (tmp[1][0] >= '0' && tmp[1][0] <= '9')
+		g->rooms[i]->coord_x = ft_atoi(tmp[1]);
+	else
+		error();
+	if (tmp[2][0] >= '0' && tmp[2][0] <= '9')
+		g->rooms[i]->coord_y = ft_atoi(tmp[2]);
+	g->rooms[i]->flag = 0;
+	free(tmp);
 }
 
 void	get_data(t_glob *g)
 {
-	char	*line;
-	printf("TEST\n");
-	malloc_rooms(g);
-	//g->rooms = (t_data **)malloc(sizeof(t_data) * g->num_rooms + 1);
-	//printf("addres: %p\n", g->rooms[1]);
-	g->ants = 0;
-	while (get_next_line(0, &line))
+	t_temp_list	*node;
+	int			i;
+	
+	node = g->data;
+	i = 0;
+	g->rooms = (t_data **)malloc(sizeof(t_data) * g->num_rooms + 1);
+	while (ft_strchr(node->str, '-') == NULL)
 	{
-		printf("LINE: %s\n", line);
-		if (g->ants == 0)
-			g->ants = ft_atoi(line);	
+		if(g->ants == 0)
+			g->ants = ft_atoi(node->str);
+		else if (*node->str != '#')
+		{
+			g->rooms[i] = (t_data *)malloc(sizeof(t_data));
+			get_data_2(g, i, node->str);
+			i++;				
+		}	
+		node = node->next;	
 	}
-
+	g->rooms[i] = NULL;
 }
