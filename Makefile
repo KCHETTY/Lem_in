@@ -26,9 +26,9 @@ PATH_SRC= ./src/
 
 PATH_HD= -I includes/
 
-SRC = $(PATH_SRC)main.c $(PATH_SRC)validate_map.c $(PATH_SRC)get_data.c $(PATH_SRC)save_data.c $(PATH_SRC)add_links.c
+SRC = $(PATH_SRC)main.c $(PATH_SRC)validate_map.c $(PATH_SRC)get_data.c $(PATH_SRC)save_data.c $(PATH_SRC)add_links.c $(PATH_SRC)get_path.c
 
-OBJ = main.o validate_map.o get_data.o save_data.o add_links.o
+OBJ = main.o validate_map.o get_data.o save_data.o add_links.o get_path.o
 
 $(NAME):
 	@echo "Compiling binaries..."

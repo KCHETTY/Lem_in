@@ -28,13 +28,20 @@ typedef struct				s_temp_list
 
 typedef	struct				s_data
 {
-	int						room_type;
+	int						num_links;
 	int						flag;
 	char					*room_name;
+	int						if_ant;
 	int						coord_x;
 	int						coord_y;
 	struct	s_data			**links;
 }							t_data;
+
+typedef struct				s_path
+{
+	t_data					*path;	
+	struct s_path			*next;
+}							t_path;
 
 typedef struct				s_glob
 {
@@ -52,6 +59,7 @@ typedef struct				s_glob
 	t_data					*start;
 	t_data					**rooms;
 	t_temp_list				*tmp;
+	t_path					*f_path;
 	t_data					*end;
 }							t_glob;
 
@@ -60,4 +68,5 @@ void						get_data(t_glob *g);
 t_temp_list					*save_data(t_glob *g);
 void						error(void);
 void						add_links(t_glob *g);
+void						get_path(t_glob *g);
 #endif

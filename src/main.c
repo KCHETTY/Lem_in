@@ -29,10 +29,11 @@ int		main()
 	{
 		get_data(&g);
 		add_links(&g);
+		get_path(&g);
 		while (i < g.num_rooms)
 		{
 			j = 0;
-			printf("ADDRESS: %p NAME: %s X: %d Y: %d\n", g.rooms[i], g.rooms[i]->room_name, g.rooms[i]->coord_x, g.rooms[i]->coord_y);
+			printf("ADDRESS: %p NAME: %s X: %d Y: %d flag: %d\n", g.rooms[i], g.rooms[i]->room_name, g.rooms[i]->coord_x, g.rooms[i]->coord_y, g.rooms[i]->flag);
 
 			while (g.rooms[i]->links[j] != NULL)
 			{

@@ -73,7 +73,7 @@ void	write_links(t_glob *g, int links, int i)
 			j++;
 		}
 		g->rooms[i]->links[j] = NULL;
-	}	
+	}
 }
 
 int		get_link_num(t_glob *g, char *ref)
@@ -110,7 +110,8 @@ void	add_links(t_glob *g)
 	while (i < g->num_rooms)
 	{
 		links =	get_link_num(g, g->rooms[i]->room_name);
-		printf("NUM: %d\n", links);
+		g->rooms[i]->num_links = links;
+		printf("ROOM LINK: %d\n", g->rooms[i]->num_links);
 		write_links(g, links, i);	
 		g->tmp = NULL;
 		i++;
