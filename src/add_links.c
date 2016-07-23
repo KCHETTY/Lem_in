@@ -50,8 +50,8 @@ t_data *get_adress(t_glob *g, char *name)
 			//printf("DATA[0]: %s and DATA[1]: %s\n", stuff[0], stuff[1]);
 			if (ft_strcmp(stuff[0], name) == 0)
 				return (g->rooms[get_num(stuff[1], g)]);
-			else if (ft_strcmp(stuff[1], name) == 0)
-				return (g->rooms[get_num(stuff[0], g)]);
+			//else if (ft_strcmp(stuff[1], name) == 0)
+			//	return (g->rooms[get_num(stuff[0], g)]);
 		}
 		node = node->next;
 	}

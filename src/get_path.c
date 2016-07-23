@@ -18,21 +18,18 @@ int		find_path(t_glob *g, t_data *node)
 		if (ft_strcmp(node->room_name, g->end->room_name) == 0)
 		{
 			node->flag = 1;
-			//return (1);
+			i = node->num_links;
 		}
-		if (node->links[i] != NULL)
+		else if(node->links[i] != NULL)
 		{
 			if (check_flag(node->links[i]))
 			{
 				node->flag = 1;
 				find_path(g, node->links[i]);
 			}
+			else if (ft_strcmp(g->start->room_name, node->room_name) != 0)
+				node->flag = -1;	
 		}
-		/*else if (node->links[i] == NULL)
-		{
-			node->flag = -1;
-			return (0);
-		}*/
 		i++;
 	}
 	return (1);
@@ -48,8 +45,8 @@ void	get_path(t_glob *g)
 		fst = g->f_path;
 	}
 	fst->path = g->start;*/
-	if (find_path(g, g->start))
-		write(1, "success", 7);
-	else
-		write(1, "failure", 7);
+		if (find_path(g, g->start))
+			write(1, "success", 7);
+		else
+			write(1, "failure", 7);
 }
