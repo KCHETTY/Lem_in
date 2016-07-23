@@ -39,10 +39,9 @@ void    get_data_2(t_glob *g, int i, char *str)
 	else
 		error();
 	if (tmp[2][0] >= '0' && tmp[2][0] <= '9')
-	{
-		//printf("TMP2: %s\n", tmp[2]);
 		g->rooms[i]->coord_y = ft_atoi(tmp[2]);
-	}
+	else
+		error();
 	g->rooms[i]->flag = 0;
 	g->rooms[i]->if_ant = 0;
 	free(tmp);

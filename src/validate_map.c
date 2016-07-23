@@ -30,10 +30,22 @@ static int	test_alpha(char *str)
 	while (*str != '\0')
 	{
 		c = *str;
-		if ((c >= 58 && c <= 126) || (c >= 33 && c <= 47))
-		{
-			return (1);
-		}
+		if (ft_isprint(c) == 0)
+			error();
+		str++;
+	}
+	return (0);
+}
+
+static int	test_digit(char *str)
+{
+	char c;
+
+	while (*str != '\0')
+	{
+		c = *str;
+		if (ft_isdigit(c) == 0)
+			error();
 		str++;
 	}
 	return (0);
@@ -43,7 +55,7 @@ static void	check_data(t_glob *g, char *str)
 {
 	g->is_space = 0;
 	g->is_dash = 0;
-	if (str[0] == 'L')
+	if ((str[0] == 'L') || (str[0] == '\n') || (str[0] == ' '))
 		error();
 	g->lines++;
 	while (*str != '\0')
@@ -75,10 +87,9 @@ int			get_map(t_glob *g)
 	//printf("NODE: %p\n", node);
 	while (node->next != NULL)
 	{
-		printf("node->str: %s\n" ,node->str);
-		if (node->str == NULL)
-			error();
-		if ((g->lines == 0) && (test_alpha(node->str) == 0))
+		printf("node->str: %s\n", node->str);
+		test_alpha(node->str);
+		if ((g->lines == 0) && (test_digit(node->str) == 0))
 			g->ant_flag = 1;
 		if ((ft_strcmp("##start", node->str)) == 0)
 			g->start_flag = 1;
@@ -89,6 +100,8 @@ int			get_map(t_glob *g)
 			node = node->next;
 			continue;
 		}
+		if (node->str == NULL)
+			error();
 		check_data(g, node->str);
 		node = node->next;
 	}
