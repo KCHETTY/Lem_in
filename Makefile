@@ -6,7 +6,7 @@
 #    By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/25 11:55:33 by arnovan-          #+#    #+#              #
-#    Updated: 2016/07/22 07:49:36 by kchetty          ###   ########.fr        #
+#    Updated: 2016/07/23 15:21:55 by arnovan-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,12 @@ PATH_SRC= ./src/
 
 PATH_HD= -I includes/
 
-SRC = $(PATH_SRC)main.c $(PATH_SRC)validate_map.c $(PATH_SRC)get_data.c $(PATH_SRC)save_data.c $(PATH_SRC)add_links.c $(PATH_SRC)get_path.c
+SRC = $(PATH_SRC)main.c $(PATH_SRC)validate_map.c $(PATH_SRC)get_data.c\
+	  $(PATH_SRC)save_data.c $(PATH_SRC)add_links.c $(PATH_SRC)get_path.c\
+	  $(PATH_SRC)move_ant.c
 
-OBJ = main.o validate_map.o get_data.o save_data.o add_links.o get_path.o
+OBJ = main.o validate_map.o get_data.o save_data.o add_links.o get_path.o\
+	  move_ant.o
 
 $(NAME):
 	@echo "Compiling binaries..."

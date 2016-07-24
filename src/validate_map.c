@@ -6,7 +6,7 @@
 /*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/05 12:50:58 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/07/22 17:40:17 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/07/23 14:58:06 by arnovan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,15 @@ static void	check_data(t_glob *g, char *str)
 int			get_map(t_glob *g)
 {
 	t_temp_list	*node;
-	/////// Intitialize in main ////////
-	g->num_links = 0;
-	g->num_rooms = 0;
-	g->lines = 0;
-	g->ant_flag = 0;
-	g->start_flag = 0;
-	g->end_flag = 0;
-	///////////////////////////////////
+
 	node = g->data;
-	//printf("NODE: %p\n", node);
 	while (node->next != NULL)
 	{
 		printf("node->str: %s\n", node->str);
 		test_alpha(node->str);
-		if ((g->lines == 0) && (test_digit(node->str) == 0))
-			g->ant_flag = 1;
-		if ((ft_strcmp("##start", node->str)) == 0)
-			g->start_flag = 1;
-		if ((ft_strcmp("##end", node->str)) == 0)
-			g->end_flag = 1;
+		((g->lines == 0) && (test_digit(node->str) == 0)) ? g->ant_flag = 1 : 0;
+		((ft_strcmp("##start", node->str)) == 0) ? g->start_flag = 1 : 0;
+		((ft_strcmp("##end", node->str)) == 0) ? g->end_flag = 1 : 0;
 		if ((ft_strncmp("#", node->str, 1)) == 0)
 		{
 			node = node->next;

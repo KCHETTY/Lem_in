@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/22 07:47:51 by kchetty           #+#    #+#             */
-/*   Updated: 2016/07/22 17:39:51 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/07/23 14:44:46 by arnovan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_temp_list		*save_data(t_glob *g)
 {
 	t_temp_list *head;
 	t_temp_list *node;
-	
+
 	head = NULL;
 	while (get_next_line(0, &g->cursor))
 	{

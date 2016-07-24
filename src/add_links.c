@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/22 11:38:00 by kchetty           #+#    #+#             */
-/*   Updated: 2016/07/22 17:39:02 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/07/23 14:35:15 by arnovan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 int		get_num(char *name, t_glob *g)
 {
 	int i;
-	
+
 	i = 0;
 	//printf("THIS IS THE NAME: %s\n", name);
 	while (i < g->num_rooms)
 	{
 		if (ft_strcmp(g->rooms[i]->room_name, name) == 0)
 		{
-			//printf("STUFF: %s\n", g->rooms[i]->room_name);
-			//printf("THIS IS THE EYE: %i\n", i);
+	//printf("STUFF: %s\n", g->rooms[i]->room_name);
+	//printf("THIS IS THE EYE: %i\n", i);
 			return (i);
 		}
 		i++;
@@ -32,10 +32,10 @@ int		get_num(char *name, t_glob *g)
 	return (0);
 }
 
-t_data *get_adress(t_glob *g, char *name)
+t_data	*get_adress(t_glob *g, char *name)
 {
 	t_temp_list *node;
-	char	**stuff;
+	char		**stuff;
 
 	if (g->tmp == NULL)
 		node = g->data;
@@ -50,8 +50,8 @@ t_data *get_adress(t_glob *g, char *name)
 			//printf("DATA[0]: %s and DATA[1]: %s\n", stuff[0], stuff[1]);
 			if (ft_strcmp(stuff[0], name) == 0)
 				return (g->rooms[get_num(stuff[1], g)]);
-			//else if (ft_strcmp(stuff[1], name) == 0)
-			//	return (g->rooms[get_num(stuff[0], g)]);
+	//else if (ft_strcmp(stuff[1], name) == 0)
+	//	return (g->rooms[get_num(stuff[0], g)]);
 		}
 		node = node->next;
 	}
@@ -82,7 +82,7 @@ int		get_link_num(t_glob *g, char *ref)
 	int				num_links;
 	char			**data;
 
-	node = g->data;	
+	node = g->data;
 	num_links = 0;
 	while (node->next != NULL)
 	{
@@ -91,28 +91,28 @@ int		get_link_num(t_glob *g, char *ref)
 			data = ft_strsplit(node->str, '-');
 			if (data[0] == data[1])
 				error();
-			if ((ft_strcmp(ref, data[0]) == 0) || 
+			if ((ft_strcmp(ref, data[0]) == 0) ||
 					(ft_strcmp(ref, data[1]) == 0))
 				num_links += 1;
-		}	
+		}
 		node = node->next;
 	}
 	return (num_links);
-}                                                                      
+}
 
 void	add_links(t_glob *g)
 {
 	int i;
 	int	links;
-	g->tmp = NULL;
 
+	g->tmp = NULL;
 	i = 0;
 	while (i < g->num_rooms)
 	{
-		links =	get_link_num(g, g->rooms[i]->room_name);
+		links = get_link_num(g, g->rooms[i]->room_name);
 		g->rooms[i]->num_links = links;
 		printf("ROOM LINK: %d\n", g->rooms[i]->num_links);
-		write_links(g, links, i);	
+		write_links(g, links, i);
 		g->tmp = NULL;
 		i++;
 	}
