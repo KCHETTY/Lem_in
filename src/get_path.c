@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kchetty  <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/23 14:39:48 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/07/23 15:37:57 by arnovan-         ###   ########.fr       */
+/*   Created: 2016/07/23 14:39:48 by kchetty           #+#    #+#             */
+/*   Updated: 2016/07/23 15:37:57 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,8 @@ int		find_path(t_glob *g, t_data *node)
 
 void	get_path(t_glob *g)
 {
-	/*
-	 * t_path *fst;
-	if (g->f_path == NULL)
-	{
-		g->f_path = (t_path *)malloc(sizeof(t_path));
-		fst = g->f_path;
-	}
-	fst->path = g->start;
-	*/
 	if (find_path(g, g->start))
-		write(1, "success", 7);
+		return ;
 	else
-		write(1, "failure", 7);
+		error();
 }

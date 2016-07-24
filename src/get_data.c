@@ -31,7 +31,6 @@ void	get_data_2(t_glob *g, int i, char *str)
 	char	**tmp;
 
 	tmp = ft_strsplit(str, ' ');
-	//printf("TEMP: %s\n", tmp[0]);
 	g->rooms[i]->room_name = tmp[0];
 	if (tmp[1][0] >= '0' && tmp[1][0] <= '9')
 		g->rooms[i]->coord_x = ft_atoi(tmp[1]);
@@ -71,6 +70,5 @@ void	get_data(t_glob *g)
 		}
 		node = node->next;
 	}
-	printf("START: %p    END: %p\n", g->start, g->end);
 	g->rooms[i] = NULL;
 }

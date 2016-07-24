@@ -79,7 +79,7 @@ int			get_map(t_glob *g)
 	node = g->data;
 	while (node->next != NULL)
 	{
-		printf("node->str: %s\n", node->str);
+		printf("%s\n", node->str);
 		test_alpha(node->str);
 		((g->lines == 0) && (test_digit(node->str) == 0)) ? g->ant_flag = 1 : 0;
 		((ft_strcmp("##start", node->str)) == 0) ? g->start_flag = 1 : 0;

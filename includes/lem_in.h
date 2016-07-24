@@ -40,7 +40,7 @@ typedef	struct				s_data
 typedef struct				s_path
 {
 	char					*room_name;
-	int						ant_name;
+	long int						ant_name;
 	int						is_ant;
 	int						end;
 	struct s_path			*next;
@@ -49,8 +49,6 @@ typedef struct				s_path
 typedef struct				s_glob
 {
 	int						num_rooms;
-	//long int				done_ants;
-	//long int				busy_ants;
 	long int				ants;
 	int						num_links;
 	int						lines;
@@ -76,5 +74,4 @@ void						error(void);
 void						add_links(t_glob *g);
 void						get_path(t_glob *g);
 void						move_ant(t_glob *g);
-//void						ant_path(t_glob *g, t_data *list);
 #endif

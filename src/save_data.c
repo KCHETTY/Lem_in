@@ -24,8 +24,6 @@ t_temp_list		*save_data(t_glob *g)
 		{
 			head = (t_temp_list *)malloc(sizeof(t_temp_list));
 			node = head;
-			//printf("HEAD: %p\n", head);
-			//printf("node: %p\n", node);
 		}
 		node->str = g->cursor;
 		node->next = (t_temp_list *)malloc(sizeof(t_temp_list));
@@ -34,6 +32,5 @@ t_temp_list		*save_data(t_glob *g)
 	node->next = NULL;
 	node = NULL;
 	free(node);
-	//printf("HEAD2: %p\n", head);
 	return (head);
 }
