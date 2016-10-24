@@ -12,17 +12,22 @@
 
 #include "lem_in.h"
 
+void	init(t_glob *g)
+{
+	g->ants = 0;
+	g->num_links = 0;
+	g->num_rooms = 0;
+	g->lines = 0;
+	g->ant_flag = 0;
+	g->start_flag = 0;
+	g->end_flag = 0;
+}
+
 int		main()
 {
 	t_glob		g;
 
-	g.ants = 0;
-	g.num_links = 0;
-	g.num_rooms = 0;
-	g.lines = 0;
-	g.ant_flag = 0;
-	g.start_flag = 0;
-	g.end_flag = 0;
+	init(&g);
 	g.data = save_data(&g);
 	if (get_map(&g))
 	{
