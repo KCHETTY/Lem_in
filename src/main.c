@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kchetty  <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/25 13:35:35 by kchetty           #+#    #+#             */
-/*   Updated: 2016/07/23 18:01:00 by kchetty          ###   ########.fr       */
+/*   Created: 2016/11/01 11:40:34 by kchetty           #+#    #+#             */
+/*   Updated: 2016/11/01 11:51:24 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init(t_glob *g)
 {
+	g->check = 0;
 	g->ants = 0;
 	g->num_links = 0;
 	g->num_rooms = 0;
@@ -23,7 +24,7 @@ void	init(t_glob *g)
 	g->end_flag = 0;
 }
 
-int		main()
+int		main(void)
 {
 	t_glob		g;
 

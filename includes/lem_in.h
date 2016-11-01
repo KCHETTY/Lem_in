@@ -6,7 +6,7 @@
 /*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/18 13:13:57 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/11/01 10:39:34 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/01 11:51:31 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct				s_glob
 	int						end_flag;
 	int						is_space;
 	int						is_dash;
+	int						check;
 	char					*cursor;
 	t_temp_list				*data;
 	t_data					*start;
