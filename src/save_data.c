@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/22 07:47:51 by kchetty           #+#    #+#             */
-/*   Updated: 2016/07/23 14:44:46 by arnovan-         ###   ########.fr       */
+/*   Updated: 2016/11/01 10:39:31 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_temp_list		*save_data(t_glob *g)
 		}
 		node->str = g->cursor;
 		node->next = (t_temp_list *)malloc(sizeof(t_temp_list));
+		if (node->str == NULL || (ft_strcmp(node->str, "\0") == 0))
+			error();
 		node = node->next;
 	}
 	node->next = NULL;
