@@ -6,7 +6,7 @@
 /*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/18 13:13:57 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/11/01 11:51:31 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/01 14:39:33 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
+# include "../libft/includes/ft_printf.h"
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>

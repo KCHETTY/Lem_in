@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 11:41:16 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/01 11:51:28 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/01 14:39:36 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	move_ants_onward(t_glob *g, t_path *rm, int i)
 		if (ft_strcmp(rm->room_name, g->start->room_name) != 0)
 			rm->is_ant = 0;
 		if (i <= g->ants)
-			printf("L%d-%s ", i, rm->next->room_name);
+			ft_printf("L%d-%s ", i, rm->next->room_name);
 		return ;
 	}
 }
@@ -48,9 +48,9 @@ void	march_ants(t_glob *g)
 		{
 			current->next->is_ant = 1;
 			if (i <= g->ants)
-				printf("L%d-%s\n", i, current->next->room_name);
+				ft_printf("L%d-%s\n", i, current->next->room_name);
 			else if (i <= g->ants + 4)
-				printf("\n");
+				ft_printf("\n");
 			i++;
 		}
 		else
@@ -71,7 +71,6 @@ void	set_ants(t_glob *g)
 		i++;
 		new = new->next;
 	}
-	printf("HEY IMA III> : %d\n", i);
 	g->f_path->is_ant = g->f_path->is_ant * i;
 }
 
@@ -128,5 +127,6 @@ void	move_ant(t_glob *g)
 		}
 	}
 	write_list(g);
+	ft_printf("\n");
 	march_ants(g);
 }
