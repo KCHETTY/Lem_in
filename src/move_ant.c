@@ -43,7 +43,7 @@ void	march_ants(t_glob *g)
 		  	current->next->is_ant = 1;
 			if (i <= g->ants)
 				printf("L%d-%s\n", i, current->next->room_name);
-			else if (i <= g->ants + 1)
+			else if (i <= g->ants + 4)
 				printf("\n");
 			i++;
 		}
