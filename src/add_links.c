@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/22 11:38:00 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/01 11:34:36 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/02 11:29:06 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,13 @@ int		get_link_num(t_glob *g, char *ref)
 		if (ft_strchr(node->str, '-') != NULL)
 		{
 			data = ft_strsplit(node->str, '-');
-			if (data[0] == data[1])
+			if (ft_strcmp(data[0], data[1]) == 0)
 				error();
 			if ((ft_strcmp(ref, data[0]) == 0) ||
 					(ft_strcmp(ref, data[1]) == 0))
 				num_links += 1;
+			if (ft_strcmp(g->end->room_name, data[1]) == 0)
+				g->hey = 1;
 		}
 		node = node->next;
 	}
@@ -106,4 +108,6 @@ void	add_links(t_glob *g)
 		g->tmp = NULL;
 		i++;
 	}
+	if (g->hey == 0)
+		error();
 }
