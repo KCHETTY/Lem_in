@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 11:40:34 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/02 11:24:53 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/07 10:53:42 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int		main(void)
 	g.data = save_data(&g);
 	if (get_map(&g))
 	{
-		get_data(&g);
-		add_links(&g);
-		get_path(&g);
-		move_ant(&g);
+			get_data(&g);
+			add_links(&g);
+			get_path(&g);
+			move_ant(&g);
 	}
 	else
 		error();

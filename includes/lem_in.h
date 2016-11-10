@@ -6,7 +6,7 @@
 /*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/18 13:13:57 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/11/02 11:29:09 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/07 11:09:37 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 typedef struct				s_temp_list
 {
-	char	*str;
-	struct s_temp_list *next;
+	char					*str;
+	struct s_temp_list		*next;
 }							t_temp_list;
 
 typedef	struct				s_data
@@ -35,13 +35,13 @@ typedef	struct				s_data
 	int						if_ant;
 	int						coord_x;
 	int						coord_y;
-	struct	s_data			**links;
+	struct s_data			**links;
 }							t_data;
 
 typedef struct				s_path
 {
 	char					*room_name;
-	long int						ant_name;
+	long int				ant_name;
 	int						is_ant;
 	int						end;
 	struct s_path			*next;

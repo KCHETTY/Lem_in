@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 17:26:07 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/02 11:00:37 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/07 10:55:00 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ void	get_data_2(t_glob *g, int i, char *str)
 	free(tmp);
 }
 
+void	g_ants(t_glob *g, char *str)
+{
+	g->ants = ft_atoi(str);
+	if (g->ants == 0)
+		error();
+
+}
+
 void	get_data(t_glob *g)
 {
 	t_temp_list	*node;
@@ -56,7 +64,7 @@ void	get_data(t_glob *g)
 	while (ft_strchr(node->str, '-') == NULL)
 	{
 		if (g->ants == 0)
-			g->ants = ft_atoi(node->str);
+			g_ants(g, node->str); 
 		else if ((ft_strcmp("##start", node->str)) == 0)
 			g->start_flag = 1;
 		else if ((ft_strcmp("##end", node->str)) == 0)
